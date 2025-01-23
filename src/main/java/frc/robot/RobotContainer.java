@@ -37,7 +37,7 @@ public class RobotContainer {
   private final Command rightCommand = new RightStartAuto(_chassis, _shooter);
   private final Command nonSpeakerCommand = new NonSpeakerStartAuto(_chassis);
 
-  private final Hanger _hanger = new Hanger();
+  private final OldHanger _hanger = new OldHanger();
 
   SendableChooser<Command> m_chooser;
   

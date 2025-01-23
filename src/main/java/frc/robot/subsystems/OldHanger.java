@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class Hanger extends SubsystemBase{
+public class OldHanger extends SubsystemBase{
     
     private final int moterCanID11 = 11;
     private final int moterCanID12 = 12;
@@ -17,7 +17,7 @@ public class Hanger extends SubsystemBase{
     private CANSparkMax hangMotor11 = new CANSparkMax(moterCanID11, MotorType.kBrushed);
     private CANSparkMax hangMotor12 = new CANSparkMax(moterCanID12, MotorType.kBrushed);
 
-    public Hanger()
+    public OldHanger()
     {
         // //reset it every time -> to reset encosder specifically to initial settings
         hangMotor11.restoreFactoryDefaults();

@@ -1,15 +1,15 @@
 package frc.robot.SubsystemCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Hanger;
+import frc.robot.subsystems.OldHanger;
 
-public class HangCommand extends Command{
+public class OldHangerCommand extends Command{
     
-    Hanger hangMotor;
+    OldHanger hangMotor;
     String motorID ="";
     double power;
 
-   public HangCommand(Hanger _hangMotor, double speed)
+   public OldHangerCommand(OldHanger _hangMotor, double speed)
    {
         this.hangMotor = _hangMotor;
         this.power = speed;
