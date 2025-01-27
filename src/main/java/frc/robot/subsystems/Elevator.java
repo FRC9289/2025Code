@@ -28,22 +28,23 @@ public class Elevator extends SubsystemBase {
         elevatorMotor15.setSmartCurrentLimit(speed);
         elevatorMotor15.burnFlash();
     }
-
+    //Run the motors
     public void run(double speed) {
         elevatorMotor14.set(speed);
         SmartDashboard.putNumber("Elevator Motor 14", elevatorMotor14.get());
         elevatorMotor15.set(speed);
         SmartDashboard.putNumber("Elevator Motor 15", elevatorMotor15.get());
     }
-
+    //Stop the motors
     public void stop() {
         elevatorMotor14.set(0);
         elevatorMotor15.set(0);
     }
-
+    //Debug info
     @Override
     public void periodic() {
         SmartDashboard.putNumber("Elevator Motor 14", elevatorMotor14.get());
         SmartDashboard.putNumber("Elevator Motor 15", elevatorMotor15.get());
     }
 }
+//Made by Wolfram121
