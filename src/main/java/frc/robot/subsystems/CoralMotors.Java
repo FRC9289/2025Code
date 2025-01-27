@@ -23,7 +23,7 @@ public class CoralMotors extends SubsystemBase {
     }
 
     public void run(double speed) {
-        coralMotor13.set((speed * -1));
+        coralMotor13.set(speed);
         SmartDashboard.putNumber("Coral Motor 13", coralMotor13.get());
     }
 
