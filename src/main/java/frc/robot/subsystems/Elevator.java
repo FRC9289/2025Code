@@ -29,10 +29,11 @@ public class Elevator extends SubsystemBase {
         elevatorMotor15.burnFlash();
     }
     //Run the motors
+    //we need an up and down function instead of run make this like two motors when u get the chance plz -jayraj 
     public void run(double speed) {
         elevatorMotor14.set(speed);
         SmartDashboard.putNumber("Elevator Motor 14", elevatorMotor14.get());
-        elevatorMotor15.set(speed);
+        elevatorMotor15.set(-speed);
         SmartDashboard.putNumber("Elevator Motor 15", elevatorMotor15.get());
     }
     //Stop the motors
