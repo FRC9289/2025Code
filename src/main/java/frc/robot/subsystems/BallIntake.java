@@ -4,8 +4,9 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class BallIntake {
+public class BallIntake extends SubsystemBase{
     private final int motorCanId1 = 0;
     private final int motorCanId2 = 1;
     //max speed ig? 
@@ -14,6 +15,7 @@ public class BallIntake {
     //class initialization for the two intake motors
     private CANSparkMax intakeMotor1 = new CANSparkMax(motorCanId1, MotorType.kBrushless);
     private CANSparkMax intakeMotor2 = new CANSparkMax(motorCanId2, MotorType.kBrushless);
+
     //eli said that were arent using brushed motors. Might need a fact check on this
     public BallIntake()
     {
@@ -44,7 +46,7 @@ public class BallIntake {
         SmartDashboard.putNumber("Motor 1 power", intakeMotor1.get());
         SmartDashboard.putNumber("Motor 2 power", intakeMotor2.get());
     }
-    
+
     //turns motor to out put the ball 
     public void output(double speed){
         //for direction of movement
