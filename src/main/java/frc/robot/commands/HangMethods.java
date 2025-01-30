@@ -1,5 +1,44 @@
 package frc.robot.commands;
 
-public class HangMethods {
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.Hang;
+import frc.robot.subsystems.OldHanger;
+import frc.robot.SubsystemCommands.HangCommands;
+import frc.robot.SubsystemCommands.OldHangerCommand;
+
+public class HangMethods extends Command {
+    //Define attributes
+    Hang _hanger;
+    Joystick _joystick;
+
     
+    public HangMethods(Hang _hanger, Joystick _controller) {
+        //Construct Attributes
+        this._hanger = _hanger;
+        _joystick = _controller;
+        addRequirements(_hanger);
+    }
+
+    @Override
+    public void execute()
+    {
+        //Set speeds and directions based on button press
+        if(_joystick.getRawButton(CommandConstants.ButtonY))
+        {
+            HangCommands _command = new HangCommands(_hanger, -5);
+            _command.execute();
+        }
+        else if(_joystick.getRawButton(CommandConstants.ButtonB))
+        {
+            HangCommands _command = new HangCommands(_hanger, 5);
+            _command.execute();
+        }
+        else
+        {
+            HangCommands _command = new HangCommands(_hanger, 0);
+            _command.execute();
+        }
+    }
 }
+
