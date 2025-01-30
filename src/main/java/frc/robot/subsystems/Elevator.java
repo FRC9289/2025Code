@@ -1,51 +1,91 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.commands.CommandConstants;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
-import com.revrobotics.CANSparkMax;
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 
 public class Elevator extends SubsystemBase {
+  
+   //intialize motorCanID
+   private final int motorCanID11 = 11;
+   private final int motorCanID12 = 12;
 
-    private final int speed = 40; //Speed lim
-    //Declare motors (Someonne pls change to real)
-    private final int moterCanID14 = 14;
-    private CANSparkMax elevatorMotor14 = new CANSparkMax(moterCanID14, MotorType.kBrushed);
-    
-    private final int moterCanID15 = 15;
-    private CANSparkMax elevatorMotor15 = new CANSparkMax(moterCanID15, MotorType.kBrushed);
 
-    Elevator() {
-        elevatorMotor14.restoreFactoryDefaults();
-        elevatorMotor14.setSmartCurrentLimit(speed);
-        elevatorMotor14.burnFlash();
+   //initialize speed limit
+   private final int speedLimit = 20;
 
-        elevatorMotor15.restoreFactoryDefaults();
-        elevatorMotor15.setSmartCurrentLimit(speed);
-        elevatorMotor15.burnFlash();
-    }
-    //Run the motors
-    //we need an up and down function instead of run make this like two motors when u get the chance plz -jayraj 
-    public void run(double speed) {
-        elevatorMotor14.set(speed);
-        SmartDashboard.putNumber("Elevator Motor 14", elevatorMotor14.get());
-        elevatorMotor15.set(-speed);
-        SmartDashboard.putNumber("Elevator Motor 15", elevatorMotor15.get());
-    }
-    //Stop the motors
-    public void stop() {
-        elevatorMotor14.set(0);
-        elevatorMotor15.set(0);
-    }
-    //Debug info
-    @Override
-    public void periodic() {
-        SmartDashboard.putNumber("Elevator Motor 14", elevatorMotor14.get());
-        SmartDashboard.putNumber("Elevator Motor 15", elevatorMotor15.get());
-    }
+
+   //initialize CANSparkMax
+   private CANSparkMax elevatorMotor11 = new CANSparkMax(motorCanID11, MotorType.kBrushed);
+   private CANSparkMax elevatorMotor12 = new CANSparkMax(motorCanID12, MotorType.kBrushed);
+
+
+   public Elevator()
+   {
+       //reset it every time to reset encoder specifically to initial settings
+       elevatorMotor11.restoreFactoryDefaults();
+       elevatorMotor12.restoreFactoryDefaults();
+
+
+       //set speed limit on how fast motors can go
+       elevatorMotor11.setSmartCurrentLimit(speedLimit);
+       elevatorMotor12.setSmartCurrentLimit(speedLimit);
+
+
+       //save changes to motor controller/encoder
+       elevatorMotor11.burnFlash();
+       elevatorMotor12.burnFlash();
+   }
+
+
+   //turns motor up
+   public void up(double speed)
+   {
+       //direction of movement
+       elevatorMotor11.set(speed);
+       elevatorMotor12.set(-speed);
+
+
+       SmartDashboard.putNumber("Motor 11 power", elevatorMotor11.get());
+       SmartDashboard.putNumber("Motor 12 power", elevatorMotor12.get());
+   }
+
+
+   //turns motor down
+   public void down(double speed)
+   {
+       //direction of movement
+       elevatorMotor11.set(-speed);
+       elevatorMotor12.set(speed);
+
+
+       SmartDashboard.putNumber("Motor 11 power", elevatorMotor11.get());
+       SmartDashboard.putNumber("Motor 12 power", elevatorMotor12.get());
+   }
+
+
+   //terminates motor movement
+   public void stop()
+   {
+       elevatorMotor11.set(0);
+       elevatorMotor12.set(0);
+   }
+
+
+   public void periodic()
+   {
+       SmartDashboard.putNumber("elevator motor 11", elevatorMotor11.get());
+       SmartDashboard.putNumber("elevator motor 12", elevatorMotor12.get());
+   }
+
+
 }
-//Made by Wolfram121
+
+
+
