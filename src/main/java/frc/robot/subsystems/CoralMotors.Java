@@ -2,38 +2,38 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.commands.CommandConstants;
-
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
 public class CoralMotors extends SubsystemBase {
-    //Declare motors
-    private final int moterCanID13 = 13;
-    private final int speed = 40;
-    private CANSparkMax coralMotor13 = new CANSparkMax(moterCanID13, MotorType.kBrushed);
-    //Creates a new CoralMotors
-    CoralMotors() {
-        coralMotor13.restoreFactoryDefaults();
-        coralMotor13.setSmartCurrentLimit(speed);
-        coralMotor13.burnFlash();
+    // Constants
+    private static final int MOTOR_CAN_ID = 13;
+    private static final int MOTOR_CURRENT_LIMIT = 40;
+    
+    // Motor
+    private final CANSparkMax coralMotor = new CANSparkMax(MOTOR_CAN_ID, MotorType.kBrushed);
+    
+    // Constructor
+    public CoralMotors() {
+        coralMotor.restoreFactoryDefaults();
+        coralMotor.setSmartCurrentLimit(MOTOR_CURRENT_LIMIT);
+        coralMotor.burnFlash();
     }
-    //Run the motors
+    
+    // Run the motor at a specified speed
     public void run(double speed) {
-        coralMotor13.set(speed);
-        SmartDashboard.putNumber("Coral Motor 13", coralMotor13.get());
+        coralMotor.set(speed);
+        SmartDashboard.putNumber("Coral Motor Speed", coralMotor.get());
     }
-    //Stop the motors
+    
+    // Stop the motor
     public void stop() {
-        coralMotor13.set(0);
+        coralMotor.set(0);
     }
-    //Debug info
+    
+    // Periodic method for debugging and updates
     @Override
     public void periodic() {
-        SmartDashboard.putNumber("Coral Motor 13", coralMotor13.get());
+        SmartDashboard.putNumber("Coral Motor Speed", coralMotor.get());
     }
 }
-//Made by Wolfram121
