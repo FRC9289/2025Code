@@ -71,7 +71,7 @@ public class Elevator extends SubsystemBase {
    }
 
 
-   //3hsdjkfdsjf
+   //banana
    //terminates motor movement
    public void stop()
    {
