@@ -69,9 +69,7 @@ public class Elevator extends SubsystemBase {
        SmartDashboard.putNumber("Motor 11 power", elevatorMotor11.get());
        SmartDashboard.putNumber("Motor 12 power", elevatorMotor12.get());
    }
-
-
-   //banana
+   
    //terminates motor movement
    public void stop()
    {
