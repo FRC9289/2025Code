@@ -71,4 +71,5 @@ public class BallIntake extends SubsystemBase{
         SmartDashboard.putNumber("hang motor 11", intakeMotor1.get());
         SmartDashboard.putNumber("hang motor 12", intakeMotor2.get());
     }
+    
 }
