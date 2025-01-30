@@ -42,6 +42,7 @@ public class Elevator extends SubsystemBase {
        elevatorMotor11.burnFlash();
        elevatorMotor12.burnFlash();
    }
+   private String test = " this is a test for eddie";
 
 
    //turns motor up
@@ -69,6 +70,8 @@ public class Elevator extends SubsystemBase {
        SmartDashboard.putNumber("Motor 12 power", elevatorMotor12.get());
    }
 
+
+   //e
 
    //terminates motor movement
    public void stop()
