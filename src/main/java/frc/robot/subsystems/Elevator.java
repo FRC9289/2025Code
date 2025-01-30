@@ -71,6 +71,8 @@ public class Elevator extends SubsystemBase {
    }
    //eddie wang is my goat
 
+   //e
+
    //terminates motor movement
    public void stop()
    {
