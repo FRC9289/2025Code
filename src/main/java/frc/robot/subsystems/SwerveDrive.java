@@ -6,6 +6,8 @@ import com.revrobotics.CANSparkMax;
 public class SwerveDrive {
     public static final double L = 20; // equal to length between wheels axles
     public static final double W = 20; // equal to width between wheels axles
+    public static final int MAX_SPEED = 40; //Max speed of motors
+    public static final int TERM = 1; //Max watt
 
     //F -> Front, B -> Back, R -> Right, L -> Left, D -> Drive, T -> Turn
     private static CANSparkMax FLDMotor = new CANSparkMax(1, MotorType.kBrushless); // FIELD
@@ -57,13 +59,13 @@ public class SwerveDrive {
         BRTMotor.restoreFactoryDefaults();
 
         // //set the speed limit on how fast the motor can go
-        FLDMotor.setSmartCurrentLimit(1);
+        FLDMotor.setSmartCurrentLimit(MAX_SPEED);
         FLTMotor.setSmartCurrentLimit(1);
-        FRDMotor.setSmartCurrentLimit(1);
+        FRDMotor.setSmartCurrentLimit(MAX_SPEED);
         FRTMotor.setSmartCurrentLimit(1);
-        BLDMotor.setSmartCurrentLimit(1);
+        BLDMotor.setSmartCurrentLimit(MAX_SPEED);
         BLTMotor.setSmartCurrentLimit(1);
-        BRDMotor.setSmartCurrentLimit(1);
+        BRDMotor.setSmartCurrentLimit(MAX_SPEED);
         BRTMotor.setSmartCurrentLimit(1);
 
         // //saves changes to motor controller / encoder
