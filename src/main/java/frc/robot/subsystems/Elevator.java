@@ -42,7 +42,6 @@ public class Elevator extends SubsystemBase {
        elevatorMotor11.burnFlash();
        elevatorMotor12.burnFlash();
    }
-   private String test = " this is a test for eddie";
 
 
    //turns motor up
