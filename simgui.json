@@ -1,12 +1,5 @@
 {
   "HALProvider": {
-    "Other Devices": {
-      "SPARK MAX [1]": {
-        "header": {
-          "open": true
-        }
-      }
-    },
     "RoboRIO": {
       "RoboRIO Input": {
         "open": true
@@ -39,6 +32,9 @@
     }
   },
   "NetworkTables Info": {
+    "Connections": {
+      "open": true
+    },
     "visible": true
   },
   "Plot": {

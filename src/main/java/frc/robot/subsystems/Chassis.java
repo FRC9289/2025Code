@@ -24,15 +24,6 @@ public class Chassis extends SubsystemBase {
 // private CANSparkMax _backRight = new CANSparkMax(4, MotorType.kBrushed);
 
 
-//F -> Front, B -> Back, R -> Right, L -> Left, D -> Drive, T -> Turn
-private CANSparkMax FLDMotor = new CANSparkMax(1, MotorType.kBrushless); // FIELD
-private CANSparkMax FLTMotor = new CANSparkMax(2, MotorType.kBrushless); // FILLET
-private CANSparkMax FRDMotor = new CANSparkMax(3, MotorType.kBrushless); // FORD
-private CANSparkMax FRTMotor = new CANSparkMax(4, MotorType.kBrushless); // FART
-private CANSparkMax BLDMotor = new CANSparkMax(5, MotorType.kBrushless); // BLEED
-private CANSparkMax BLTMotor = new CANSparkMax(6, MotorType.kBrushless); // SANDWHICH
-private CANSparkMax BRDMotor = new CANSparkMax(7, MotorType.kBrushless); // BREAD
-private CANSparkMax BRTMotor = new CANSparkMax(8, MotorType.kBrushless); // brat
 
 private static final Chassis _chassis = new Chassis();
 
@@ -61,14 +52,6 @@ private static final Chassis _chassis = new Chassis();
     // SmartDashboard.putNumber("Front Right Speed", _frontRight.get());
     // SmartDashboard.putNumber("Back Left Speed", _backLeft.get());
     // SmartDashboard.putNumber("Back Right Speed", _backRight.get());
-    SmartDashboard.putNumber("FLD", FLDMotor.get());
-    SmartDashboard.putNumber("FLT", FLTMotor.get());
-    SmartDashboard.putNumber("FRD", FRDMotor.get());
-    SmartDashboard.putNumber("FRT", FRTMotor.get());
-    SmartDashboard.putNumber("BLD", BLDMotor.get());
-    SmartDashboard.putNumber("BLT", BLTMotor.get());
-    SmartDashboard.putNumber("BRD", BRDMotor.get());
-    SmartDashboard.putNumber("BRT", BRTMotor.get());
 
     //_drive.feed();
   }
