@@ -76,7 +76,7 @@ public class RobotContainer {
     _hanger.setDefaultCommand(new HangDefaultCommand(_hanger, _chassisController));
     _chassis.setDefaultCommand(new ArcadeDrive(_chassis, _chassisController));
 
-    //uncooment when hanger installed onto the bot
+    //uncomment when hanger installed onto the bot
     // _hanger.setDefaultCommand(new HangDefaultCommand(_hanger, _armController));
   }
 

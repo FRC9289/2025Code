@@ -3,6 +3,8 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkMax;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 public class SwerveDrive {
     public static final double L = 20; // equal to length between wheels axles
     public static final double W = 20; // equal to width between wheels axles
@@ -46,6 +48,14 @@ public class SwerveDrive {
         FRTMotor.set(Math.atan2(b, d) / Math.PI);
         FLTMotor.set(Math.atan2(b, c) / Math.PI);
 
+        SmartDashboard.putNumber("FLD", FLDMotor.get());
+        SmartDashboard.putNumber("FLT", FLTMotor.get());
+        SmartDashboard.putNumber("FRD", FRDMotor.get());
+        SmartDashboard.putNumber("FRT", FRTMotor.get());
+        SmartDashboard.putNumber("BLD", BLDMotor.get());
+        SmartDashboard.putNumber("BLT", BLTMotor.get());
+        SmartDashboard.putNumber("BRD", BRDMotor.get());
+        SmartDashboard.putNumber("BRT", BRTMotor.get());
     }
     public SwerveDrive(){
         // //reset it every time -> to reset encosder specifically to initial settings
