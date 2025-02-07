@@ -4,137 +4,46 @@
 
 package frc.robot.SubsystemCommands;
 
-import com.ctre.phoenix6.hardware.CANcoder;
-import com.revrobotics.RelativeEncoder;
-import com.revrobotics.CANSparkBase.IdleMode;
-import com.revrobotics.CANSparkLowLevel.MotorType;
+import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.RobotContainer;
+import frc.robot.subsystems.Drivetrain;
 
-import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.kinematics.SwerveModulePosition;
-import edu.wpi.first.math.kinematics.SwerveModuleState;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.lib.drivers.VikingSparkMax;
-import frc.robot.Constants.SwerveConstants;
+public class SwerveDrive extends Command {
+  private Drivetrain drivetrain = Drivetrain.getInstance();
 
-public class SwerveDrive extends SubsystemBase {
-  private VikingSparkMax driveMotor;
-  private VikingSparkMax turnMotor;
-
-  private RelativeEncoder driveEncoder;
-  private RelativeEncoder turnEncoder;
-
-  private PIDController turnPIDController;
-  private CANcoder absoluteEncoder;
-
-  private boolean absoluteEncoderReversed;
-  private double absoluteEncoderOffset;
-
-  private int driveID = 0;
-
-  private Rotation2d lastAngle;
-
-  /** Creates a new SwerveModule. */
-  public SwerveDrive(int driveMotorId, int turnMotorId, boolean driveMotorReversed, boolean turnMotorReversed,
-    int absoluteEncoderId, double absoluteEncoderOffset, boolean absoluteEncoderReversed) {
-      this.absoluteEncoderOffset = absoluteEncoderOffset;
-      this.absoluteEncoderReversed = absoluteEncoderReversed;
-
-      driveID = driveMotorId;
-      absoluteEncoder = new CANcoder(absoluteEncoderId);
-
-      driveMotor = new VikingSparkMax(driveMotorId, MotorType.kBrushless, IdleMode.kCoast, 45, driveMotorReversed);
-      turnMotor = new VikingSparkMax(turnMotorId, MotorType.kBrushless, IdleMode.kCoast, 25, turnMotorReversed);
-
-      driveEncoder = driveMotor.getEncoder();
-      turnEncoder = turnMotor.getEncoder();
-
-      turnPIDController = new PIDController(SwerveConstants.KP_TURNING, 0, 0);
-      turnPIDController.enableContinuousInput(-Math.PI, Math.PI);
-
-      resetEncoders();
-      lastAngle = getState().angle;
+  /** Creates a new SwerveDrive. */
+  public SwerveDrive() {
+    // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(drivetrain);
   }
 
+  // Called when the command is initially scheduled.
   @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Drive Distance (rot) - Motor: " + driveID, getDriveMotorPosition());
-    SmartDashboard.putNumber("Wheel Position (rot) - Motor: " + driveID, getTurnMotorPosition());
-    SmartDashboard.putNumber("Absolute Wheel Angle (deg) - Motor: " + driveID, absoluteEncoder.getAbsolutePosition().getValueAsDouble());
-    
+  public void initialize() {}
+
+  // Called every time the scheduler runs while the command is scheduled.
+  @Override
+  public void execute() {
+    drivetrain.swerveDrive(
+        -RobotContainer.driverController.getLeftY(), 
+        -RobotContainer.driverController.getLeftX(), 
+        -RobotContainer.driverController.getRightX(),
+        !RobotContainer.driverController.getRawButton(XboxController.Button.kB.value),
+        new Translation2d(),
+        true);
   }
 
-  public void setBrake(boolean brake){
-    if(brake){
-      driveMotor.setIdleMode(IdleMode.kBrake);
-      turnMotor.setIdleMode(IdleMode.kCoast);
-    }
-    else{
-      driveMotor.setIdleMode(IdleMode.kCoast);
-      turnMotor.setIdleMode(IdleMode.kCoast);
-    }
-  }
-  
-  public double getDriveMotorPosition(){
-    return driveEncoder.getPosition() * SwerveConstants.DRIVE_MOTOR_PCONVERSION;
+  // Called once the command ends or is interrupted.
+  @Override
+  public void end(boolean interrupted) {
+    drivetrain.stopModules();
   }
 
-  public double getDriveMotorVelocity(){
-    return driveEncoder.getVelocity() * SwerveConstants.DRIVE_MOTOR_VCONVERSION;
-  }
-
-  public double getTurnMotorPosition(){
-    return turnEncoder.getPosition() * SwerveConstants.TURN_MOTOR_PCONVERSION;
-  }
-
-  public double getTurnMotorVelocity(){
-    return turnEncoder.getVelocity() * SwerveConstants.TURN_MOTOR_VCONVERSION;
-  }
-
-  public double getAbsoluteEncoderAngle(){
-    double angle = absoluteEncoder.getAbsolutePosition().getValueAsDouble();
-    angle -= absoluteEncoderOffset;
-    angle *= (2 * Math.PI);
-    return angle * (absoluteEncoderReversed ? -1.0 : 1.0);
-  }
-
-  public void resetEncoders(){
-    driveEncoder.setPosition(0);
-    turnEncoder.setPosition(getAbsoluteEncoderAngle() / SwerveConstants.TURN_MOTOR_PCONVERSION);
-  }
-
-  public SwerveModuleState getState(){
-    return new SwerveModuleState(getDriveMotorVelocity(), new Rotation2d(getTurnMotorPosition()));
-  }
-
-  public SwerveModulePosition getPosition(){
-    return new SwerveModulePosition(getDriveMotorPosition(), new Rotation2d(getTurnMotorPosition()));
-  }
-
-  public void setDesiredState(SwerveModuleState desiredState){
-    desiredState = SwerveModuleState.optimize(desiredState, getState().angle); 
-    
-    setAngle(desiredState);
-    setSpeed(desiredState);
-    SmartDashboard.putString("Swerve [" + driveMotor.getDeviceId() + "] State", getState().toString());
-    SmartDashboard.putNumber("Abs Angle " + driveMotor.getDeviceId(), getAbsoluteEncoderAngle());
-  }
-
-  public void setSpeed(SwerveModuleState desiredState){
-    driveMotor.set(desiredState.speedMetersPerSecond / SwerveConstants.DRIVETRAIN_MAX_SPEED);
-  }
-
-  public void setAngle(SwerveModuleState desiredState){
-    Rotation2d angle = (Math.abs(desiredState.speedMetersPerSecond) <= (SwerveConstants.DRIVETRAIN_MAX_SPEED * 0.01)) ? lastAngle : desiredState.angle; //Prevent rotating module if speed is less then 1%. Prevents Jittering.
-    
-    turnMotor.set(turnPIDController.calculate(getTurnMotorPosition(), desiredState.angle.getRadians()));
-    lastAngle = angle;
-  }
-
-  public void stop(){
-    driveMotor.set(0);
-    turnMotor.set(0);
+  // Returns true when the command should end.
+  @Override
+  public boolean isFinished() {
+    return false;
   }
 }
