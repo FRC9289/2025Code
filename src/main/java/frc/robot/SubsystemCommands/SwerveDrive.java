@@ -5,9 +5,11 @@
 package frc.robot.SubsystemCommands;
 
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
+import frc.robot.commands.CommandConstants;
 import frc.robot.subsystems.Drivetrain;
 
 public class SwerveDrive extends Command {
@@ -27,10 +29,10 @@ public class SwerveDrive extends Command {
   @Override
   public void execute() {
     drivetrain.swerveDrive(
-        -RobotContainer.driverController.getLeftY(), 
-        -RobotContainer.driverController.getLeftX(), 
-        -RobotContainer.driverController.getRightX(),
-        !RobotContainer.driverController.getRawButton(XboxController.Button.kB.value),
+        -RobotContainer.driverController.getRawAxis(CommandConstants.AxisLeftStickY),
+        -RobotContainer.driverController.getRawAxis(CommandConstants.AxisLeftStickX), 
+        -RobotContainer.driverController.getRawAxis(CommandConstants.AxisRightStickX),
+        !RobotContainer.driverController.getRawButton(CommandConstants.ButtonY),
         new Translation2d(),
         true);
   }

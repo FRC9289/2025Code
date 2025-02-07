@@ -82,7 +82,6 @@ private static final Chassis _chassis = new Chassis();
        double yAxis = controller.getRawAxis(CommandConstants.AxisLeftStickX);
        double xAxis = controller.getRawAxis(CommandConstants.AxisLeftStickY);
        double turn = controller.getRawAxis(CommandConstants.AxisRightStickX);
-       SwerveDrive.drive(yAxis, xAxis, turn);
   }
 
   public void autoDrive(double turnMovement, double linearMovement)
