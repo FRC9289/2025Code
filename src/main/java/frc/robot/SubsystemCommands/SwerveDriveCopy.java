@@ -1,11 +1,12 @@
-package frc.robot.subsystems;
+package frc.robot.SubsystemCommands;
 
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkMax;
+import edu.wpi.first.wpilibj2.command.Command;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class SwerveDrive {
+public class SwerveDriveCopy extends Command{
     public static final double L = 20; // equal to length between wheels axles
     public static final double W = 20; // equal to width between wheels axles
     public static final int MAX_SPEED = 40; //Max speed of motors
@@ -57,7 +58,7 @@ public class SwerveDrive {
         SmartDashboard.putNumber("BRD", BRDMotor.get());
         SmartDashboard.putNumber("BRT", BRTMotor.get());
     }
-    public SwerveDrive(){
+    public SwerveDriveCopy(){
         // //reset it every time -> to reset encosder specifically to initial settings
         FLDMotor.restoreFactoryDefaults();
         FLTMotor.restoreFactoryDefaults();

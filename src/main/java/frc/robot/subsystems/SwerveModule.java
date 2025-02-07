@@ -15,12 +15,12 @@ import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.lib.drivers.PearadoxSparkMax;
+import frc.robot.lib.drivers.VikingSparkMax;
 import frc.robot.Constants.SwerveConstants;
 
 public class SwerveModule extends SubsystemBase {
-  private PearadoxSparkMax driveMotor;
-  private PearadoxSparkMax turnMotor;
+  private VikingSparkMax driveMotor;
+  private VikingSparkMax turnMotor;
 
   private RelativeEncoder driveEncoder;
   private RelativeEncoder turnEncoder;
@@ -44,8 +44,8 @@ public class SwerveModule extends SubsystemBase {
       driveID = driveMotorId;
       absoluteEncoder = new CANcoder(absoluteEncoderId);
 
-      driveMotor = new PearadoxSparkMax(driveMotorId, MotorType.kBrushless, IdleMode.kCoast, 45, driveMotorReversed);
-      turnMotor = new PearadoxSparkMax(turnMotorId, MotorType.kBrushless, IdleMode.kCoast, 25, turnMotorReversed);
+      driveMotor = new VikingSparkMax(driveMotorId, MotorType.kBrushless, IdleMode.kCoast, 45, driveMotorReversed);
+      turnMotor = new VikingSparkMax(turnMotorId, MotorType.kBrushless, IdleMode.kCoast, 25, turnMotorReversed);
 
       driveEncoder = driveMotor.getEncoder();
       turnEncoder = turnMotor.getEncoder();

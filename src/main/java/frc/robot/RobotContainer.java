@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.subsystems.*;
 import frc.robot.AutonCommands.AutoDrive;
@@ -16,7 +17,9 @@ import frc.robot.AutonCommands.LeftStartAuto;
 import frc.robot.AutonCommands.MiddleStartAuto;
 import frc.robot.AutonCommands.NonSpeakerStartAuto;
 import frc.robot.AutonCommands.RightStartAuto;
+import frc.robot.SubsystemCommands.SwerveDrive;
 import frc.robot.commands.*;
+import frc.robot.oldCode.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -26,18 +29,20 @@ import frc.robot.commands.*;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private static final Chassis _chassis = Chassis.returnInstance();
-  private final Joystick _chassisController = new Joystick(0);
-  private final Joystick _armController = new Joystick(0);
-  private final ArmShooter _shooter = new ArmShooter();
+  // old stuff
+  // private static final Chassis _chassis = Chassis.returnInstance();
+ private final Joystick _drivetrainController = new Joystick(0);
+  // private final Joystick _armController = new Joystick(0);
+  // private final ArmShooter _shooter = new ArmShooter();
+  private final Drivetrain drivetrain = Drivetrain.getInstance();
 
   //initializating commands to put up as choices
-  private final Command leftCommand = new LeftStartAuto(_chassis, _shooter);
-  private final Command middleCommand = new MiddleStartAuto(_chassis, _shooter);
-  private final Command rightCommand = new RightStartAuto(_chassis, _shooter);
-  private final Command nonSpeakerCommand = new NonSpeakerStartAuto(_chassis);
-
-  private final OldHanger _hanger = new OldHanger();
+  //old code
+  // private final Command leftCommand = new LeftStartAuto(drivetrain);
+  // private final Command middleCommand = new MiddleStartAuto(drivetrain);
+  // private final Command rightCommand = new RightStartAuto(drivetrain);
+  // private final Command nonSpeakerCommand = new NonSpeakerStartAuto(drivetrain);
+  // private final OldHanger _hanger = new OldHanger();
 
   SendableChooser<Command> m_chooser;
   
@@ -45,17 +50,18 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    configureBindings();
+    // configureBindings();
     CameraServer.startAutomaticCapture();
+    drivetrain.setDefaultCommand(new SwerveDrive());
 
      m_chooser = new SendableChooser<>();
 
 
     //set up choices for autonomous program
-    m_chooser.setDefaultOption("Non-Speaker Start", nonSpeakerCommand);
-    m_chooser.addOption("Left Start", leftCommand);
-    m_chooser.addOption("Middle Start", middleCommand);
-    m_chooser.addOption("Right Start", rightCommand);
+    //  m_chooser.setDefaultOption("Non-Speaker Start", nonSpeakerCommand);
+    // m_chooser.addOption("Left Start", leftCommand);
+    // m_chooser.addOption("Middle Start", middleCommand);
+    // m_chooser.addOption("Right Start", rightCommand);
 
     SmartDashboard.putData("Autonomous Chooser", m_chooser);
   }
@@ -72,9 +78,9 @@ public class RobotContainer {
   private void configureBindings() 
   {
     // Configure the trigger bindings
-    _shooter.setDefaultCommand(new ArmShooterDefaultCommand(_shooter, _chassisController));
-    _hanger.setDefaultCommand(new HangDefaultCommand(_hanger, _chassisController));
-    _chassis.setDefaultCommand(new ArcadeDrive(_chassis, _chassisController));
+    // _shooter.setDefaultCommand(new ArmShooterDefaultCommand(_shooter, _chassisController));
+    // _hanger.setDefaultCommand(new HangDefaultCommand(_hanger, _chassisController));
+    // _chassis.setDefaultCommand(new ArcadeDrive(_chassis, _chassisController));
 
     //uncomment when hanger installed onto the bot
     // _hanger.setDefaultCommand(new HangDefaultCommand(_hanger, _armController));

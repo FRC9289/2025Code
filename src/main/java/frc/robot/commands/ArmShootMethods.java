@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.SubsystemCommands.ArmShootCommand;
-import frc.robot.subsystems.ArmShooter;
+import frc.robot.oldCode.ArmShootCommand;
+import frc.robot.oldCode.ArmShooter;
 
 public class ArmShootMethods {
     ArmShooter _ArmShooter;

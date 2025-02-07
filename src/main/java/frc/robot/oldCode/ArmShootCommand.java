@@ -1,9 +1,9 @@
-package frc.robot.SubsystemCommands;
+package frc.robot.oldCode;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.ArmShooter;
+import frc.robot.oldCode.ArmShooter;
 
 public class ArmShootCommand extends Command
 {
