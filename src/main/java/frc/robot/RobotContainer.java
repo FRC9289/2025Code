@@ -18,9 +18,11 @@ import frc.robot.AutonCommands.LeftStartAuto;
 import frc.robot.AutonCommands.MiddleStartAuto;
 import frc.robot.AutonCommands.NonSpeakerStartAuto;
 import frc.robot.AutonCommands.RightStartAuto;
+import frc.robot.SubsystemCommands.HangCommands;
 import frc.robot.SubsystemCommands.SwerveDrive;
 import frc.robot.commands.*;
 import frc.robot.oldCode.*;
+import frc.robot.commands.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -36,6 +38,7 @@ public class RobotContainer {
   public static final JoystickButton resetHeading_Start = new JoystickButton(driverController, CommandConstants.ButtonX);
   // private final Joystick _armController = new Joystick(0);
   // private final ArmShooter _shooter = new ArmShooter();
+  private static final Hang hangController = new Hang();
   private final Drivetrain drivetrain = Drivetrain.getInstance();
 
   //initializating commands to put up as choices
@@ -55,6 +58,7 @@ public class RobotContainer {
     // configureBindings();
     CameraServer.startAutomaticCapture();
     drivetrain.setDefaultCommand(new SwerveDrive());
+    hangController.setDefaultCommand(new HangCommands(null, 0));
     configureBindings();
      m_chooser = new SendableChooser<>();
 

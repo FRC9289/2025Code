@@ -7,7 +7,6 @@ import frc.robot.subsystems.Hang;
 public class HangCommands extends Command {
     //Define Motor Attributes
     Hang hangMotor;
-    String motorID ="";
     double power;
 
    public HangCommands(Hang _hangMotor, double speed)

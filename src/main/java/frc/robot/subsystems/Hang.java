@@ -16,7 +16,7 @@ public class Hang extends SubsystemBase {
     private final int speedLimit=20;
 
     //Define Motor Constructor
-    private CANSparkMax hangMotor13=new CANSparkMax(motorCanID13, MotorType.kBrushed);
+    private CANSparkMax hangMotor13 = new CANSparkMax(motorCanID13, MotorType.kBrushed);
 
     public Hang(){
         //Restore Motor Defaults
