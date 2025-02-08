@@ -44,25 +44,12 @@ public class Elevator extends SubsystemBase {
    }
 
 
-   //turns motor up
-   public void up(double speed)
+   //turns motor
+   public void move(double speed)
    {
        //direction of movement
        elevatorMotor11.set(speed);
        elevatorMotor12.set(-speed);
-
-
-       SmartDashboard.putNumber("Motor 11 power", elevatorMotor11.get());
-       SmartDashboard.putNumber("Motor 12 power", elevatorMotor12.get());
-   }
-
-
-   //turns motor down
-   public void down(double speed)
-   {
-       //direction of movement
-       elevatorMotor11.set(-speed);
-       elevatorMotor12.set(speed);
 
 
        SmartDashboard.putNumber("Motor 11 power", elevatorMotor11.get());
