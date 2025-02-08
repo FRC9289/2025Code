@@ -38,7 +38,7 @@ public class RobotContainer {
   public static final JoystickButton resetHeading_Start = new JoystickButton(driverController, CommandConstants.ButtonX);
   // private final Joystick _armController = new Joystick(0);
   // private final ArmShooter _shooter = new ArmShooter();
-  private static final Hang hangController = new Hang();
+  private static final Hang hang = new Hang();
   private final Drivetrain drivetrain = Drivetrain.getInstance();
 
   //initializating commands to put up as choices
@@ -58,7 +58,6 @@ public class RobotContainer {
     // configureBindings();
     CameraServer.startAutomaticCapture();
     drivetrain.setDefaultCommand(new SwerveDrive());
-    hangController.setDefaultCommand(new HangCommands(null, 0));
     configureBindings();
      m_chooser = new SendableChooser<>();
 
@@ -84,6 +83,7 @@ public class RobotContainer {
   private void configureBindings() 
   {
     resetHeading_Start.onTrue(new InstantCommand(drivetrain::zeroHeading, drivetrain));
+    hang.setDefaultCommand(new HangMethods(hang, driverController));
     // Configure the trigger bindings
     // _shooter.setDefaultCommand(new ArmShooterDefaultCommand(_shooter, _chassisController));
     // _hanger.setDefaultCommand(new HangDefaultCommand(_hanger, _chassisController));
