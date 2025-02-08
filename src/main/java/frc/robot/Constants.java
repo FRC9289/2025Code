@@ -43,7 +43,7 @@ public final class Constants {
     public static final int LEFT_BACK_CANCODER_ID = 13;
     public static final int RIGHT_BACK_CANCODER_ID = 14;
 
-    public static final int PIGEON_ID = 15;
+    public static final int PIGEON_ID = 16;
 
     //Drivetrain characteristics
     public static final double LEFT_FRONT_OFFSET = 0; //change
