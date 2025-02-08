@@ -2,8 +2,8 @@ package frc.robot.AutonCommands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.oldCode.ArmShootCommand;
+import frc.robot.oldCode.Chassis;
 import frc.robot.oldCode.DriveCommand;
-import frc.robot.subsystems.Chassis;
 
 public class NonSpeakerStartAuto extends SequentialCommandGroup{
     

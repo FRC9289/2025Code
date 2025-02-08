@@ -28,15 +28,15 @@ public final class Constants {
 
   public static final class SwerveConstants{
     //Drivetrain motor/encoder IDs
-    public static final int LEFT_FRONT_DRIVE_ID = 1;
-    public static final int RIGHT_FRONT_DRIVE_ID = 2;
+    public static final int LEFT_FRONT_DRIVE_ID = 8;
+    public static final int RIGHT_FRONT_DRIVE_ID = 5;
     public static final int LEFT_BACK_DRIVE_ID = 3;
     public static final int RIGHT_BACK_DRIVE_ID = 4;
     
-    public static final int LEFT_FRONT_TURN_ID = 5;
+    public static final int LEFT_FRONT_TURN_ID = 2;
     public static final int RIGHT_FRONT_TURN_ID = 6;
     public static final int LEFT_BACK_TURN_ID = 7;
-    public static final int RIGHT_BACK_TURN_ID = 8;
+    public static final int RIGHT_BACK_TURN_ID = 1;
     
     public static final int LEFT_FRONT_CANCODER_ID = 11;
     public static final int RIGHT_FRONT_CANCODER_ID = 12;
@@ -46,10 +46,10 @@ public final class Constants {
     public static final int PIGEON_ID = 15;
 
     //Drivetrain characteristics
-    public static final double LEFT_FRONT_OFFSET = -0.415; //change
-    public static final double RIGHT_FRONT_OFFSET = -0.317; //change
-    public static final double LEFT_BACK_OFFSET = -0.389; //change
-    public static final double RIGHT_BACK_OFFSET = 0.235; //change
+    public static final double LEFT_FRONT_OFFSET = 0; //change
+    public static final double RIGHT_FRONT_OFFSET = 0; //change
+    public static final double LEFT_BACK_OFFSET = 0; //change
+    public static final double RIGHT_BACK_OFFSET = 0; //change
 
     public static final double WHEEL_DIAMETER = Units.inchesToMeters(4);
     public static final double DRIVE_MOTOR_GEAR_RATIO = 6.75;
@@ -85,16 +85,16 @@ public final class Constants {
     public static final double AUTO_kP_TRANSLATION = 0.4;
     public static final double AUTO_kP_ROTATION = 2.4;
 
-  //   public static final HolonomicPathFollowerConfig AUTO_CONFIG = new HolonomicPathFollowerConfig(
-  //     new PIDConstants(AUTO_kP_TRANSLATION, 0.0, 0.0),
-  //     new PIDConstants(AUTO_kP_ROTATION, 0.0, 0.0),
-  //     DRIVETRAIN_MAX_SPEED, // Max module speed, in m/s
-  //     DRIVE_BASE_RADIUS,
-  //     new ReplanningConfig());
+    // public static final HolonomicPathFollowerConfig AUTO_CONFIG = new HolonomicPathFollowerConfig(
+    //   new PIDConstants(AUTO_kP_TRANSLATION, 0.0, 0.0),
+    //   new PIDConstants(AUTO_kP_ROTATION, 0.0, 0.0),
+    //   DRIVETRAIN_MAX_SPEED, // Max module speed, in m/s
+    //   DRIVE_BASE_RADIUS,
+    //   new ReplanningConfig());
 
-  //   public static final double AUTO_DRIVE_MAX_SPEED = DRIVETRAIN_MAX_SPEED / 1.5;
-  //   public static final double AUTO_DRIVE_MAX_ANGULAR_SPEED = DRIVETRAIN_MAX_ANGULAR_SPEED / 2.0;
-  //   public static final double AUTO_DRIVE_MAX_ACCELERATION = 3;
-  //   public static final double AUTO_DRIVE_MAX_ANGULAR_ACCELERATION = Math.PI;
+    // public static final double AUTO_DRIVE_MAX_SPEED = DRIVETRAIN_MAX_SPEED / 1.5;
+    // public static final double AUTO_DRIVE_MAX_ANGULAR_SPEED = DRIVETRAIN_MAX_ANGULAR_SPEED / 2.0;
+    // public static final double AUTO_DRIVE_MAX_ACCELERATION = 3;
+    // public static final double AUTO_DRIVE_MAX_ANGULAR_ACCELERATION = Math.PI;
  }
 }
