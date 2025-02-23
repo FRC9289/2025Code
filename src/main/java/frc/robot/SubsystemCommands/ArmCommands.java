@@ -5,12 +5,11 @@ import frc.robot.subsystems.Arm;
 import edu.wpi.first.wpilibj.Timer;
 
 public class ArmCommands extends Command {
-    // Define Motor Attributes
     Arm armMotor;
     double power;
     boolean up;
     Timer timer = new Timer();
-    double mtime = 2;
+    double time = 2;
 
     public ArmCommands(Arm _armMotor, double speed) {
         this.armMotor = _armMotor;
@@ -20,21 +19,21 @@ public class ArmCommands extends Command {
     }
 
     public void up() {
-        if (up) {
+        if (!up) {
             timer.reset();
-            while (timer.get() < mtime) {
+            while (timer.get() < time) {
                 armMotor.move(this.power);
             }
         }
     }
 
     public void down() {
-        if (!up) {
+        if (up) {
             timer.reset();
-            while (timer.get() < mtime) {
+            while (timer.get() < time) {
                 armMotor.move(-1 * this.power);
             }
         }
     }
 }
-//Written by Wolfram121
+// Written by Wolfram121
