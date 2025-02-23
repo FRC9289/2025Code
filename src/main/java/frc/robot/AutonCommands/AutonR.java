@@ -56,5 +56,10 @@ public class AutonR extends Command{
         drivetrain.swerveDrive(0, 0, 0, false, new Translation2d(), false);
         System.out.println("interrupted");
     }
+
+    @Override
+    public boolean isFinished() {
+        return timer.get() >= t_total;
+    }
 }
 //Written by Wolfram121
