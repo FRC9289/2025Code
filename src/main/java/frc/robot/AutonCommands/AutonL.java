@@ -12,8 +12,11 @@ import edu.wpi.first.wpilibj.Timer;
 public class AutonL extends Command{
     private Drivetrain drivetrain = Drivetrain.getInstance();
     private Timer timer;
-    private double drive_seconds = 3.25;
-    private double t1 = 0.5588;
+    private double t_total = 3.25;
+    private double t1 = 0.5588; //Speed = 4 m/s, Distance = 88 inches
+    private double front;
+    private double side;
+    private double rotation;
 
     private AutonL() {
         timer = new Timer();
@@ -27,8 +30,8 @@ public class AutonL extends Command{
 
     @Override
     public void execute(){
+        drivetrain.swerveDrive(front, side, rotation, false, new Translation2d(), false);
         if(timer.get() < t1){
-            drivetrain.swerveDrive(0.25, 0.0, 0.0, false, new Translation2d(), false);
         }
     }
 }
