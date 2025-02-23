@@ -12,7 +12,7 @@ public class AutonR extends Command{
     private double t_total = 3.25;
     private double t1 = 0.5588; //Speed = 4 m/s, Distance = 88 inches
     private double t2 = 0.5; //Uknown distance, pls fix
-    private double t3 = 0.0833; //Rotation = 30 degrees
+    private double t3 = 0.1667; //Rotation = 60 degrees
     private double front;
     private double side;
     private double rotation;
@@ -47,7 +47,7 @@ public class AutonR extends Command{
         while (!timer2.hasElapsed(t3)){
             front = 0;
             side = 0;
-            rotation = -1*(Math.PI / 6);
+            rotation = 0.25;
         }
     }
 
