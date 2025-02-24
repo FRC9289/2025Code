@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.oldCode.ArmShooter;
 
+@SuppressWarnings("unused")
 public class ArmShootCommand extends Command
 {
     ArmShooter shooter;

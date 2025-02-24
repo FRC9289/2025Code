@@ -16,6 +16,7 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
+@SuppressWarnings("unused")
 public class Chassis extends SubsystemBase {
   /** Creates a new Chassis. */
 

@@ -3,6 +3,7 @@ package frc.robot.oldCode;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 
+@SuppressWarnings("unused")
 public class DriveCommand extends Command{
 
     Chassis _chassis;

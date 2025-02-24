@@ -11,6 +11,7 @@ import frc.robot.RobotContainer;
 import frc.robot.commands.CommandConstants;
 import frc.robot.subsystems.Drivetrain;
 
+@SuppressWarnings("unused")
 public class SwerveDrive extends Command {
   private Drivetrain drivetrain = Drivetrain.getInstance();
 

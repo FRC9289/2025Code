@@ -3,9 +3,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Hang;
-import frc.robot.oldCode.OldHanger;
+
 import frc.robot.SubsystemCommands.HangCommands;
-import frc.robot.oldCode.OldHangerCommand;
+
 
 public class HangMethods extends Command {
     //Define attributes
