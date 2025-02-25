@@ -24,7 +24,6 @@ import frc.robot.SubsystemCommands.*;
 
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  // old stuff
   // private static final Chassis _chassis = Chassis.returnInstance();
   public static final Joystick driverController = new Joystick(0);
   public static final JoystickButton resetHeading_Start = new JoystickButton(driverController, CommandConstants.ButtonX);

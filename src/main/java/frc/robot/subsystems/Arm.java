@@ -13,9 +13,7 @@ public class Arm extends SubsystemBase {
 
     public Arm() {
         arm1.restoreFactoryDefaults();
-
         arm1.setSmartCurrentLimit(speedLimit);
-
         arm1.burnFlash();
     }
 
