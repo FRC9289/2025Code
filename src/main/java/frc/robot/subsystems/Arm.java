@@ -9,8 +9,8 @@ public class Arm extends SubsystemBase {
     private final int speedLimit = 20;
 
     // Provide all required parameters
-    private CANSparkMax arm1 = new CANSparkMax(16,MotorType.kBrushed);
-    private CANSparkMax arm2 = new CANSparkMax(17, MotorType.kBrushed); //Constructor showing error, so provided all parameters
+    private CANSparkMax arm1 = new CANSparkMax(16,MotorType.kBrushless);
+    private CANSparkMax arm2 = new CANSparkMax(17, MotorType.kBrushless); //Constructor showing error, so provided all parameters
 
     public Arm() {
         arm1.restoreFactoryDefaults();

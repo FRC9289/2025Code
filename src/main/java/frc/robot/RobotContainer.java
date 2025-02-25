@@ -13,16 +13,10 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.subsystems.*;
-import frc.robot.AutonCommands.AutoDrive;
-import frc.robot.AutonCommands.LeftStartAuto;
-import frc.robot.AutonCommands.MiddleStartAuto;
-import frc.robot.AutonCommands.NonSpeakerStartAuto;
-import frc.robot.AutonCommands.RightStartAuto;
-import frc.robot.SubsystemCommands.HangCommands;
-import frc.robot.SubsystemCommands.SwerveDrive;
+import frc.robot.AutonCommands.*;
 import frc.robot.commands.*;
 import frc.robot.oldCode.*;
-import frc.robot.commands.*;
+import frc.robot.SubsystemCommands.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -37,11 +31,11 @@ public class RobotContainer {
   // private static final Chassis _chassis = Chassis.returnInstance();
   public static final Joystick driverController = new Joystick(0);
   public static final JoystickButton resetHeading_Start = new JoystickButton(driverController, CommandConstants.ButtonX);
-  // private final Joystick _armController = new Joystick(0);
+  public static final JoystickButton armController = new JoystickButton(driverController, CommandConstants.ButtonY);
   // private final ArmShooter _shooter = new ArmShooter();
   private static final Hang hang = new Hang();
   private final Drivetrain drivetrain = Drivetrain.getInstance();
-
+  public static ArmCommands arm;
   //initializating commands to put up as choices
   //old code
   // private final Command leftCommand = new LeftStartAuto(drivetrain);
@@ -85,6 +79,7 @@ public class RobotContainer {
   {
     resetHeading_Start.onTrue(new InstantCommand(drivetrain::zeroHeading, drivetrain));
     hang.setDefaultCommand(new HangMethods(hang, driverController));
+    armController.onTrue(new InstantCommand(() -> new ArmCommands(1.0).run()));
     // Configure the trigger bindings
     // _shooter.setDefaultCommand(new ArmShooterDefaultCommand(_shooter, _chassisController));
     // _hanger.setDefaultCommand(new HangDefaultCommand(_hanger, _chassisController));
