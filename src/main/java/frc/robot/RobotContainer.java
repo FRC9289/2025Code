@@ -30,7 +30,7 @@ import frc.robot.commands.*;
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and trigger mappings) should be declared here.
  */
-@SuppressWarnings("unused")
+
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   // old stuff
