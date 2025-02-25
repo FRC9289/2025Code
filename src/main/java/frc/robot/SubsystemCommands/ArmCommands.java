@@ -33,6 +33,10 @@ public class ArmCommands extends Command {
             }
         }
     }
+
+    public void stop() {
+        arm.move(0);
+    }
     
 }
 // Written by Wolfram121
