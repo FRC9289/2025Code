@@ -1,37 +1,31 @@
-package frc.robot.SubsystemCommands;
-
-import edu.wpi.first.wpilibj2.command.Command;
+package frc.robot.commands;
 import frc.robot.subsystems.Arm;
 import edu.wpi.first.wpilibj.Timer;
 
-public class ArmCommands extends Command {
-    Arm armMotor;
+public class ArmCommands {
+    Arm arm;
     double power;
     boolean up;
     Timer timer = new Timer();
     double time = 2;
 
-    public ArmCommands(Arm _armMotor, double speed) {
-        this.armMotor = _armMotor;
+    public ArmCommands(double speed) {
+        this.arm = new Arm();
         this.power = speed;
         this.up = false;
-        addRequirements(armMotor);
     }
 
-    public void up() {
+    public void run() {
         if (!up) {
             timer.reset();
             while (timer.get() < time) {
-                armMotor.move(this.power);
+                arm.move(this.power);
             }
         }
-    }
-
-    public void down() {
-        if (up) {
+        else if (up) {
             timer.reset();
             while (timer.get() < time) {
-                armMotor.move(-1 * this.power);
+                arm.move(-1 * this.power);
             }
         }
     }
