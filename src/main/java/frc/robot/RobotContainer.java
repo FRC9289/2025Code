@@ -5,10 +5,8 @@
 package frc.robot;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj.smartdashboard.*;
+import edu.wpi.first.wpilibj2.command.*;
 import edu.wpi.first.wpilibj2.command.button.*;
 import frc.robot.subsystems.*;
 import frc.robot.AutonCommands.*;
@@ -23,7 +21,7 @@ import frc.robot.SubsystemCommands.*;
  */
 
 public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
+  //Define Subsystems & Commands
   // private static final Chassis _chassis = Chassis.returnInstance();
   public static final Joystick driverController = new Joystick(0);
   public static final JoystickButton resetHeading_Start = new JoystickButton(driverController, CommandConstants.ButtonX);
@@ -37,12 +35,8 @@ public class RobotContainer {
   // private final Command middleCommand = new MiddleStartAuto(drivetrain);
   // private final Command rightCommand = new RightStartAuto(drivetrain);
   // private final Command nonSpeakerCommand = new NonSpeakerStartAuto(drivetrain);
-  // private final OldHanger _hanger = new OldHanger();
-
   SendableChooser<Command> m_chooser;
   
-
-
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // configureBindings();
@@ -50,7 +44,6 @@ public class RobotContainer {
     drivetrain.setDefaultCommand(new SwerveDrive());
     configureBindings();
      m_chooser = new SendableChooser<>();
-
 
     //set up choices for autonomous program
     //  m_chooser.setDefaultOption("Non-Speaker Start", nonSpeakerCommand);
@@ -72,21 +65,14 @@ public class RobotContainer {
    */
   private void configureBindings() 
   {
+    // Configure the trigger bindings
     resetHeading_Start.onTrue(new InstantCommand(drivetrain::zeroHeading, drivetrain));
     hang.setDefaultCommand(new HangMethods(hang, driverController));
-    arm.setDefaultCommand(new ArmMethods(arm, driverController));
-    // Configure the trigger bindings
-    // _shooter.setDefaultCommand(new ArmShooterDefaultCommand(_shooter, _chassisController));
-    // _hanger.setDefaultCommand(new HangDefaultCommand(_hanger, _chassisController));
-    // _chassis.setDefaultCommand(new ArcadeDrive(_chassis, _chassisController));
-
-    //uncomment when hanger installed onto the bot
-    // _hanger.setDefaultCommand(new HangDefaultCommand(_hanger, _armController));
+    arm.setDefaultCommand(new ArmMethods(arm, driverController)); 
   }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
-   *
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {

@@ -3,7 +3,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.SubsystemCommands.ArmCommands;
-import frc.robot.SubsystemCommands.HangCommands;
 import frc.robot.subsystems.Arm;
 
 public class ArmMethods extends Command {

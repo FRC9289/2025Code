@@ -9,7 +9,8 @@ public class ArmCommands extends Command {
     double power;
     boolean up;
     Timer timer = new Timer();
-    double time = 2;
+    double time = 1;
+    boolean running = false;
 
     public ArmCommands(double speed, Arm arm) {
         this.arm = arm;
@@ -18,25 +19,39 @@ public class ArmCommands extends Command {
     }
 
     public void up() {
-        if (!up) {
+        if (!up && !running) {
             timer.reset();
+            running = true;
             while (timer.get() < time) {
                 arm.move(this.power);
             }
+            up = true;
+            running = false;
         }
     }
     public void down() {
-        if (up) {
+        if (up && !running) {
             timer.reset();
+            running = true;
             while (timer.get() < time) {
                 arm.move(-1 * this.power);
             }
+            up = false;
+            running = false;
+        }
+    }
+
+    public void execute(boolean dir) {
+        if (dir) {
+            arm.move(1);
+        }
+        else if (dir) {
+            arm.move(-1);
         }
     }
 
     public void stop() {
         arm.move(0);
-    }
-    
+    } 
 }
 // Written by Wolfram121
