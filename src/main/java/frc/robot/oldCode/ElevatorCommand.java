@@ -1,7 +1,7 @@
-package frc.robot.SubsystemCommands;
+package frc.robot.oldCode;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Elevator;
+import frc.robot.oldCode.Elevator;
 
 public class ElevatorCommand extends Command {
     //Define motor attributes
