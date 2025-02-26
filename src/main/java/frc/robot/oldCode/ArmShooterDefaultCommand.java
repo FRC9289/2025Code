@@ -1,9 +1,9 @@
-package frc.robot.commands;
+package frc.robot.oldCode;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.oldCode.ArmShooter;
+import frc.robot.commands.CommandConstants;
 
 public class ArmShooterDefaultCommand extends Command {
 

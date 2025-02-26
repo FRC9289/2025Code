@@ -1,11 +1,6 @@
-package frc.robot.commands;
-
-
+package frc.robot.oldCode;
 
 import edu.wpi.first.wpilibj.Timer;
-
-import frc.robot.oldCode.ArmShootCommand;
-import frc.robot.oldCode.ArmShooter;
 
 public class ArmShootMethods {
     ArmShooter _ArmShooter;
