@@ -17,11 +17,11 @@ public class ArmMethods extends Command {
 
     @Override
     public void execute() {
-        if (button.getRawButton(CommandConstants.AxisLeftTrigger)) {
+        if (button.getRawButton(CommandConstants.ButtonShoulderL)) {
             ArmCommands command = new ArmCommands(1, arm);
             command.down();
         }
-        else if (button.getRawButton(CommandConstants.AxisRightTrigger)) {
+        else if (button.getRawButton(CommandConstants.ButtonShoulderR)) {
             ArmCommands command = new ArmCommands(1, arm);
             command.up();
         }

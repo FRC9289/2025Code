@@ -16,10 +16,10 @@ public class RollerCommandMethod extends Command {
 
     @Override
     public void initialize() {
-        if (_controller.getRawButton(CommandConstants.ButtonA)) {
+        if (_controller.getRawButton(CommandConstants.AxisRightTrigger)) {
             this.roller.intakeIn();
         }
-        else if(_controller.getRawButton(CommandConstants.ButtonB)) {
+        else if(_controller.getRawButton(CommandConstants.AxisLeftTrigger)) {
             this.roller.stop();
         }
     }
