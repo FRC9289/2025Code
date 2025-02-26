@@ -79,7 +79,7 @@ public class RobotContainer {
   {
     resetHeading_Start.onTrue(new InstantCommand(drivetrain::zeroHeading, drivetrain));
     hang.setDefaultCommand(new HangMethods(hang, driverController));
-    armController.onTrue(new InstantCommand(() -> new ArmCommands(1.0).run()));
+    // armController.onTrue(new InstantCommand(() -> new ArmCommands(1.0).run()));
     // Configure the trigger bindings
     // _shooter.setDefaultCommand(new ArmShooterDefaultCommand(_shooter, _chassisController));
     // _hanger.setDefaultCommand(new HangDefaultCommand(_hanger, _chassisController));
