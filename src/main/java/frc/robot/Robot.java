@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.oldCode.Chassis;
+// import frc.robot.oldCode.Chassis;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj.Timer;
 // import edu.wpi.first.wpilibj.cameraserver;
@@ -26,7 +26,7 @@ import edu.wpi.first.wpilibj.Timer;
 public class Robot extends TimedRobot 
 {
   private Command m_autonomousCommand;
-  private Chassis _chassis = Chassis.returnInstance();
+  // private Chassis _chassis = Chassis.returnInstance();
   private Drivetrain drivetrain = Drivetrain.getInstance();
   private double time;
   
